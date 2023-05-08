@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Thanks! :D</title>
+	</head>
+	<body>
+		<style>
+			body {
+				background-color: #011;
+				color: #aaa;
+				font-size: 2rem;
+				text-align: center;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				height: 100vh;
+				margin: 0;
+				overflow: hidden;
+			}
+			#char {
+				color: #fff;
+			}
+
+			#p2 {
+				opacity: 0;
+				transition: opacity 1s;
+			}
+		</style>
+		<main style="font-family: monospace">
+			<p id="outer">You're <span id="char">████</span></p>
+			<p id="p2">~ Gavin M. (8-9) ~</p>
+		</main>
+		<script>
+			const sleep = async ms => new Promise(resolve => setTimeout(resolve, ms));
+			const main = async () => {
+				const chars = ["kind", "smart", "amazing", "awesome", "the best!"];
+				const char = document.getElementById("char");
+
+				await sleep(1000);
+
+				const wait = 100;
+
+				for (let i = 0; i < chars.length; i++) {
+					// Fill in the characters
+					for (const c of chars[i]) {
+						char.textContent = char.textContent.replace("█", c);
+						await sleep(wait);
+					}
+
+					// Remove extra
+					while (char.textContent.includes("█")) {
+						char.textContent = char.textContent.replace("█", "");
+						await sleep(wait);
+					}
+
+					await sleep(1000);
+
+					if (i === chars.length - 1) {
+						break;
+					}
+
+					// Clear the characters
+					for (const c of chars[i]) {
+						char.textContent = char.textContent.replace(c, "█");
+						await sleep(wait);
+					}
+
+					// Add extra
+					for (let j = 0; j < chars[i + 1].length - chars[i].length; j++) {
+						char.textContent += "█";
+						await sleep(wait);
+					}
+				}
+
+				// Clear the characters
+				const outer = document.getElementById("outer");
+				outer.innerHTML = outer.textContent;
+				for (const c of outer.textContent) {
+					outer.textContent = outer.textContent.replace(c, "█");
+					await sleep(wait);
+				}
+
+				// ADD "Thanks! :D"
+				for (const c of "Thanks! :D") {
+					const middle = outer.textContent.substring(3, 13);
+					outer.innerHTML = `███<span id="char">${middle.replace("█", c)}</span>███`;
+					await sleep(wait);
+				}
+
+				// Remove extra
+				while (outer.textContent.includes("█")) {
+					outer.textContent = outer.textContent.replace("█", "");
+					outer.textContent = outer.textContent
+						.split("")
+						.reverse()
+						.join("")
+						.replace("█", "")
+						.split("")
+						.reverse()
+						.join("");
+					await sleep(wait);
+				}
+
+				await sleep(1000);
+				document.getElementById("p2").style.opacity = 1;
+			};
+			main();
+		</script>
+	</body>
+</html>
