@@ -93,8 +93,11 @@
 
 				// ADD "Thanks! :D"
 				for (const c of "Thanks! :D") {
-					const middle = outer.textContent.substring(5, 15);
-					outer.innerHTML = `█████<span id="char">${middle.replace("█", c)}</span>█████`;
+					const middle = outer.textContent.substring(6, 17);
+					outer.innerHTML = `██████<span id="char">${middle.replace(
+						"█",
+						c
+					)}</span>██████`;
 					await sleep(wait);
 				}
 
