@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+	<!--     Hello there!    -->
+	<!--   Nice to see you.  -->
+	<!-- I hope you like it! -->
+	<!--      ~ Gavin ~      -->
+
+	<!-- P.S. Please tell me if you're reading this :) -->
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -38,7 +44,7 @@
 		<script>
 			const sleep = async ms => new Promise(resolve => setTimeout(resolve, ms));
 			const main = async () => {
-				const chars = ["kind", "smart", "amazing", "awesome", "the best!"];
+				const chars = ["kind", "smart", "amazing", "incredible", "a great teacher!"];
 				const char = document.getElementById("char");
 
 				await sleep(1000);
@@ -86,9 +92,9 @@
 				}
 
 				// ADD "Thanks! :D"
-				for (const c of "Thanks for being a great teacher! :D") {
-					const middle = outer.textContent.substring(3, 13);
-					outer.innerHTML = `███<span id="char">${middle.replace("█", c)}</span>███`;
+				for (const c of "Thanks! :D") {
+					const middle = outer.textContent.substring(5, 15);
+					outer.innerHTML = `█████<span id="char">${middle.replace("█", c)}</span>█████`;
 					await sleep(wait);
 				}
 
